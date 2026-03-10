@@ -1,0 +1,54 @@
+{
+  "name": "heybee-stagehand",
+  "version": "1.0.0",
+  "description": "Local Stagehand server for HeyBee browser automation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "heybee-stagehand": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "stagehand",
+    "browser",
+    "automation",
+    "heybee",
+    "playwright"
+  ],
+  "author": "ryan941",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryan941/stagehand-plus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ryan941/stagehand-plus/issues"
+  },
+  "homepage": "https://github.com/ryan941/stagehand-plus#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@browserbasehq/stagehand": "^3.0.8",
+    "@mendable/firecrawl-js": "^4.15.4",
+    "@tavily/core": "^0.7.2",
+    "express": "^5.1.0",
+    "uuid": "^11.1.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.21",
+    "@types/uuid": "^10.0.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
