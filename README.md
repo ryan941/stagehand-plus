@@ -14,14 +14,14 @@ A REST API server that wraps [Stagehand](https://github.com/browserbase/stagehan
 # Install globally
 npm install -g stagehand-plus
 
-# Create a .env file in your working directory
-cat > .env << 'EOF'
-MODEL_API_KEY=sk-...
-TAVILY_API_KEY=tvly-...
-FIRECRAWL_API_KEY=fc-...
-EOF
+# Generate global config file
+stagehand-plus --init
+# → creates ~/.stagehand-plus/settings.json
 
-# Start the server (auto-loads .env from current directory)
+# Edit your API keys
+vim ~/.stagehand-plus/settings.json
+
+# Start the server
 stagehand-plus
 # → listening on http://localhost:9090
 ```
@@ -34,27 +34,36 @@ npx stagehand-plus
 
 ## Configuration
 
-The server automatically loads a `.env` file from the directory where you run the command. Create one based on `.env.example`:
+### Global config (recommended)
 
-```env
-PORT=9090
+Run `stagehand-plus --init` to create `~/.stagehand-plus/settings.json`:
 
-# Stagehand (browser automation)
-MODEL_NAME=gpt-4o
-MODEL_API_KEY=
-
-# Tavily (web search)
-TAVILY_API_KEY=
-
-# FireCrawl (web scraping)
-FIRECRAWL_API_KEY=
+```json
+{
+  "port": 9090,
+  "modelName": "gpt-4o",
+  "modelApiKey": "sk-...",
+  "tavilyApiKey": "tvly-...",
+  "firecrawlApiKey": "fc-..."
+}
 ```
 
-**Three ways to provide API keys** (in priority order):
+Set once, works everywhere. No need to create `.env` in every directory.
+
+### Per-project `.env` (optional override)
+
+If you need different keys for a specific project, create a `.env` in that directory:
+
+```env
+MODEL_API_KEY=sk-different-key
+```
+
+### Priority order (highest to lowest)
 
 1. **Per-request headers** — `x-model-api-key`, `x-tavily-api-key`, `x-firecrawl-api-key`
-2. **`.env` file** — in the directory where you run `stagehand-plus`
-3. **Environment variables** — `export MODEL_API_KEY=sk-...`
+2. **`.env` file** — in the current working directory
+3. **`~/.stagehand-plus/settings.json`** — global config
+4. **Environment variables** — `export MODEL_API_KEY=sk-...`
 
 ## API Reference
 
