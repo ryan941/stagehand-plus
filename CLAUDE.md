@@ -1,4 +1,4 @@
-# heybee-stagehand
+# stagehand-plus
 
 Local Stagehand server for HeyBee browser automation.
 
@@ -32,7 +32,7 @@ src/
 
 ## npm Package
 
-- Package name: `heybee-stagehand`
+- Package name: `stagehand-plus`
 - Published files: `dist/` only (controlled by `files` field)
-- Binary: `npx heybee-stagehand` starts the server
-- Registry: https://www.npmjs.com/package/heybee-stagehand
+- Binary: `npx stagehand-plus` starts the server
+- Registry: https://www.npmjs.com/package/stagehand-plus

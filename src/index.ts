@@ -35,6 +35,6 @@ process.on("SIGINT", shutdown);
 process.on("SIGTERM", shutdown);
 
 app.listen(PORT, () => {
-  console.log(`[server] heybee-stagehand listening on http://localhost:${PORT}`);
+  console.log(`[server] stagehand-plus listening on http://localhost:${PORT}`);
   console.log(`[server] health: http://localhost:${PORT}/health`);
 });

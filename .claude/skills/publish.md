@@ -1,6 +1,6 @@
 # Skill: npm-publish
 
-npm 發布流程 for heybee-stagehand。
+npm 發布流程 for stagehand-plus。
 
 ## 觸發條件
 
@@ -20,7 +20,7 @@ npm whoami
 ### 2. 版本確認
 
 - 讀取 `package.json` 的當前版本
-- 檢查 npm registry 上的最新版本：`npm view heybee-stagehand version`
+- 檢查 npm registry 上的最新版本：`npm view stagehand-plus version`
 - 如果使用者有指定版本類型（patch/minor/major），直接使用
 - 如果未指定，根據變更內容自動判斷：
   - 只有依賴更新、bug fix → `patch`
@@ -77,7 +77,7 @@ npm publish --access public
 
 ```bash
 # 等幾秒讓 registry 同步
-npm view heybee-stagehand version
+npm view stagehand-plus version
 ```
 
 確認 registry 上的版本與剛發布的一致。
@@ -86,8 +86,8 @@ npm view heybee-stagehand version
 
 回報：
 - 版本變更：`舊版本 → 新版本`
-- npm 頁面：https://www.npmjs.com/package/heybee-stagehand
-- 安裝指令：`npm install heybee-stagehand@X.Y.Z`
+- npm 頁面：https://www.npmjs.com/package/stagehand-plus
+- 安裝指令：`npm install stagehand-plus@X.Y.Z`
 - Git tag：`vX.Y.Z`
 
 ## 失敗處理

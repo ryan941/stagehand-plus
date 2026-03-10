@@ -1,4 +1,4 @@
-# heybee-stagehand
+# stagehand-plus
 
 A REST API server that wraps [Stagehand](https://github.com/browserbase/stagehand) for AI-driven browser automation, with built-in [Tavily](https://tavily.com) web search and [FireCrawl](https://firecrawl.dev) web scraping.
 
@@ -12,7 +12,7 @@ A REST API server that wraps [Stagehand](https://github.com/browserbase/stagehan
 
 ```bash
 # Install globally
-npm install -g heybee-stagehand
+npm install -g stagehand-plus
 
 # Create a .env file in your working directory
 cat > .env << 'EOF'
@@ -22,14 +22,14 @@ FIRECRAWL_API_KEY=fc-...
 EOF
 
 # Start the server (auto-loads .env from current directory)
-heybee-stagehand
+stagehand-plus
 # → listening on http://localhost:9090
 ```
 
 Or use npx without installing:
 
 ```bash
-npx heybee-stagehand
+npx stagehand-plus
 ```
 
 ## Configuration
@@ -53,7 +53,7 @@ FIRECRAWL_API_KEY=
 **Three ways to provide API keys** (in priority order):
 
 1. **Per-request headers** — `x-model-api-key`, `x-tavily-api-key`, `x-firecrawl-api-key`
-2. **`.env` file** — in the directory where you run `heybee-stagehand`
+2. **`.env` file** — in the directory where you run `stagehand-plus`
 3. **Environment variables** — `export MODEL_API_KEY=sk-...`
 
 ## API Reference

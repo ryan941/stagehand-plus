@@ -1,11 +1,11 @@
 {
-  "name": "heybee-stagehand",
+  "name": "stagehand-plus",
   "version": "1.0.2",
-  "description": "Local Stagehand server for HeyBee browser automation",
+  "description": "REST API server for AI-driven browser automation, web search, and web scraping",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "heybee-stagehand": "dist/index.js"
+    "stagehand-plus": "dist/index.js"
   },
   "files": [
     "dist"
