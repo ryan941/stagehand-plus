@@ -32,6 +32,15 @@ Or use npx without installing:
 npx stagehand-plus
 ```
 
+## CLI Commands
+
+```bash
+stagehand-plus              # Start the server
+stagehand-plus --init       # Generate ~/.stagehand-plus/settings.json
+stagehand-plus --version    # Show current version + check for updates
+stagehand-plus --update     # Self-update to latest version
+```
+
 ## Configuration
 
 ### Global config (recommended)

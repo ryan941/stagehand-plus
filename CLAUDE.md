@@ -21,7 +21,10 @@ Local Stagehand server for HeyBee browser automation.
 
 ```
 src/
-  index.ts              — Express server entry point
+  index.ts              — CLI entry point (--init, --update, --version, or start server)
+  server.ts             — Express server setup and routes
+  config.ts             — Global config (~/.stagehand-plus/settings.json)
+  updater.ts            — Self-update and version check
   session-manager.ts    — Stagehand session lifecycle
   routes/
     health.ts           — GET /health
