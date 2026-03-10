@@ -4,6 +4,7 @@ import { homedir } from "os";
 
 const CONFIG_DIR = join(homedir(), ".stagehand-plus");
 const CONFIG_FILE = join(CONFIG_DIR, "settings.json");
+const PID_FILE = join(CONFIG_DIR, "stagehand-plus.pid");
 
 export interface Settings {
   port?: number;
@@ -75,4 +76,4 @@ export function initConfig(): void {
   console.log("[config] edit it with your API keys, then restart the server");
 }
 
-export { CONFIG_DIR, CONFIG_FILE };
+export { CONFIG_DIR, CONFIG_FILE, PID_FILE };

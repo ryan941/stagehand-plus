@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { loadSettings, applySettingsToEnv, initConfig, CONFIG_FILE } from "./config";
+import { loadSettings, applySettingsToEnv, initConfig, CONFIG_FILE, PID_FILE } from "./config";
+import { readFileSync, existsSync } from "fs";
 import dotenv from "dotenv";
 import { resolve } from "path";
 
@@ -21,6 +22,25 @@ const args = process.argv.slice(2);
 
 if (args.includes("--init")) {
   initConfig();
+  process.exit(0);
+}
+
+if (args.includes("--stop")) {
+  if (!existsSync(PID_FILE)) {
+    console.log("[stop] no running server found");
+    process.exit(1);
+  }
+  const pid = parseInt(readFileSync(PID_FILE, "utf-8").trim(), 10);
+  try {
+    process.kill(pid, "SIGTERM");
+    console.log(`[stop] sent shutdown signal to PID ${pid}`);
+  } catch (err: any) {
+    if (err.code === "ESRCH") {
+      console.log("[stop] process not running (stale PID file)");
+    } else {
+      console.error("[stop] failed:", err.message);
+    }
+  }
   process.exit(0);
 }
 
