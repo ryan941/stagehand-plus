@@ -14,12 +14,14 @@ A REST API server that wraps [Stagehand](https://github.com/browserbase/stagehan
 # Install globally
 npm install -g heybee-stagehand
 
-# Set your API keys
-export MODEL_API_KEY=sk-...         # OpenAI / Anthropic key for Stagehand
-export TAVILY_API_KEY=tvly-...      # Optional: for /v1/search
-export FIRECRAWL_API_KEY=fc-...     # Optional: for /v1/scrape
+# Create a .env file in your working directory
+cat > .env << 'EOF'
+MODEL_API_KEY=sk-...
+TAVILY_API_KEY=tvly-...
+FIRECRAWL_API_KEY=fc-...
+EOF
 
-# Start the server
+# Start the server (auto-loads .env from current directory)
 heybee-stagehand
 # → listening on http://localhost:9090
 ```
@@ -32,7 +34,7 @@ npx heybee-stagehand
 
 ## Configuration
 
-Copy `.env.example` to `.env` and fill in your keys:
+The server automatically loads a `.env` file from the directory where you run the command. Create one based on `.env.example`:
 
 ```env
 PORT=9090
@@ -48,7 +50,11 @@ TAVILY_API_KEY=
 FIRECRAWL_API_KEY=
 ```
 
-All API keys can also be passed per-request via headers (see API Reference below).
+**Three ways to provide API keys** (in priority order):
+
+1. **Per-request headers** — `x-model-api-key`, `x-tavily-api-key`, `x-firecrawl-api-key`
+2. **`.env` file** — in the directory where you run `heybee-stagehand`
+3. **Environment variables** — `export MODEL_API_KEY=sk-...`
 
 ## API Reference
 

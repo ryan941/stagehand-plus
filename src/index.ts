@@ -1,4 +1,10 @@
 #!/usr/bin/env node
+import dotenv from "dotenv";
+import { resolve } from "path";
+
+// Load .env from current working directory (where the user runs the command)
+dotenv.config({ path: resolve(process.cwd(), ".env") });
+
 import express from "express";
 import { SessionManager } from "./session-manager";
 import { createSessionRouter } from "./routes/sessions";

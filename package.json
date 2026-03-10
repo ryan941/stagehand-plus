@@ -1,6 +1,6 @@
 {
   "name": "heybee-stagehand",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Local Stagehand server for HeyBee browser automation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -40,6 +40,7 @@
     "@browserbasehq/stagehand": "^3.1.0",
     "@mendable/firecrawl-js": "^4.15.4",
     "@tavily/core": "^0.7.2",
+    "dotenv": "^17.3.1",
     "express": "^5.1.0",
     "uuid": "^11.1.0",
     "zod": "^3.24.4"
