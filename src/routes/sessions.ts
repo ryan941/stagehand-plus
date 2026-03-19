@@ -16,10 +16,13 @@ export function createSessionRouter(manager: SessionManager): Router {
       const body = req.body || {};
       const modelApiKey =
         headerString(req.headers["x-model-api-key"]) || process.env.MODEL_API_KEY || "";
+      const modelBaseUrl =
+        headerString(req.headers["x-model-base-url"]) || body.modelBaseUrl || process.env.MODEL_BASE_URL || "";
 
       const { sessionId } = await manager.startSession({
         modelName: body.modelName || process.env.MODEL_NAME || "gpt-4o",
         modelApiKey,
+        modelBaseUrl: modelBaseUrl || undefined,
         headless: body.browser?.launchOptions?.headless,
         browser: body.browser,
         systemPrompt: body.systemPrompt,

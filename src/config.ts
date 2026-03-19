@@ -10,6 +10,7 @@ export interface Settings {
   port?: number;
   modelName?: string;
   modelApiKey?: string;
+  modelBaseUrl?: string;
   tavilyApiKey?: string;
   firecrawlApiKey?: string;
 }
@@ -41,6 +42,7 @@ export function applySettingsToEnv(settings: Settings): void {
     PORT: settings.port?.toString(),
     MODEL_NAME: settings.modelName,
     MODEL_API_KEY: settings.modelApiKey,
+    MODEL_BASE_URL: settings.modelBaseUrl,
     TAVILY_API_KEY: settings.tavilyApiKey,
     FIRECRAWL_API_KEY: settings.firecrawlApiKey,
   };
@@ -67,6 +69,7 @@ export function initConfig(): void {
     port: 9090,
     modelName: "gpt-4o",
     modelApiKey: "",
+    modelBaseUrl: "",
     tavilyApiKey: "",
     firecrawlApiKey: "",
   };
