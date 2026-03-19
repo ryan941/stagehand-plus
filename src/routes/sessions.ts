@@ -116,35 +116,7 @@ export function createSessionRouter(manager: SessionManager): Router {
         actOptions.model = model;
       }
 
-      let result = await stagehand.act(instruction, actOptions as any);
-
-      // Auto-retry: if fill failed on unsupported element, try click + type
-      if (
-        !result.success &&
-        result.message?.includes("unsupported-element") &&
-        /輸入|input|type|fill|enter/i.test(instruction)
-      ) {
-        console.log("[act] fill failed, retrying with click + type strategy");
-        // Step 1: click the target field
-        const clickResult = await stagehand.act(
-          `Click on the input field related to: ${instruction}`,
-          actOptions as any
-        );
-        if (clickResult.success) {
-          // Step 2: extract the text to type from the instruction
-          const textMatch = instruction.match(
-            /[`「]([^`」]+)[`」]|輸入\s*(\S+)|input\s+(\S+)|type\s+(\S+)|enter\s+(\S+)/i
-          );
-          const textToType =
-            textMatch?.[1] || textMatch?.[2] || textMatch?.[3] || textMatch?.[4] || textMatch?.[5] || "";
-          if (textToType) {
-            result = await stagehand.act(
-              `Type "${textToType}" using the keyboard into the focused input field`,
-              actOptions as any
-            );
-          }
-        }
-      }
+      const result = await stagehand.act(instruction, actOptions as any);
 
       res.json({
         success: true,
